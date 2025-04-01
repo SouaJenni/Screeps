@@ -18,12 +18,12 @@ module.exports.loop = function () {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     if(upgraders.length<2){
         var newName = 'Upgrader' + Game.time;
-        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, MOVE], newName, {memory: {role: 'upgrader'}});
+        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, MOVE, HEAL], newName, {memory: {role: 'upgrader'}});
     }
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     if(builders.length<2){
         var newName = 'Builder' + Game.time;
-        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE, ATTACK, TOUGH], newName, {memory: {role: 'builder'}});
+        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE, RANGED_ATTACK], newName, {memory: {role: 'builder'}});
     }
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];

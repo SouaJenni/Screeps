@@ -1,13 +1,10 @@
 var roleBuilder = {
 
     run: function(creep) {
-        const target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if(target) {
-            if(creep.attack(target) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(target);
-            }
+        const hostile_creeps = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
+        if(hostile_creeps.length > 0) {
+            creep.rangedMassAttack();
         }
-
         if(creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.building = false;
             creep.say('🔄 harvest');
